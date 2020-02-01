@@ -56,12 +56,13 @@ class LazyIter {
         }
         return null;
     }
+    // starting value IS necesssary, unlike regular reduce since we can't look ahead to check for 
+    // array length and we can't force user to know if array would have a length after the functions
+    // are all applied
     reduce(func, startingValue) {
-        let val = startingValue || null;
+        let val = startingValue;
         let index = 0;
         for (const item of this) {
-            if (!index && !val)
-                val = item;
             val = func(val, item, index);
             index++;
         }

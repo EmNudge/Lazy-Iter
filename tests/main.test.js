@@ -104,11 +104,11 @@ describe("Consumer testing", () => {
 
   test("reduce works", () => {
     const iter = new LazyIter(arr);
-    const recuceFunc = (accum, val) => val + accum;
+    const reduceFunc = (accum, val) => `${accum} ${val}`;
 
-    const num1 = iter.find(recuceFunc);
-    const num2 = arr.find(recuceFunc);
+    const str1 = iter.reduce(reduceFunc, '');
+    const str2 = arr.reduce(reduceFunc, '');
 
-    expect(num1).toBe(num2);
+    expect(str1).toBe(str2);
   })
 });
